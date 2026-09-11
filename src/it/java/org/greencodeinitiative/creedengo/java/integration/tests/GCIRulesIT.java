@@ -426,8 +426,63 @@ class GCIRulesIT extends GCIRulesBase {
         String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI82/MakeNonReassignedVariablesConstants.java";
         String ruleId = "creedengo-java:GCI82";
         String ruleMsg = "The variable is never reassigned and can be 'final'";
-        int[] startLines = new int[]{9, 14, 15, 20, 26, 29, 48, 75, 108, 121};
-        int[] endLines = new int[]{9, 14, 15, 20, 26, 29, 48, 75, 108, 121};
+        int[] startLines = new int[]{9, 14, 15, 20, 26, 29, 48, 75, 108, 121, 146};
+        int[] endLines = new int[]{9, 14, 15, 20, 26, 29, 48, 75, 108, 121, 146};
+
+        checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines);
+    }
+
+    @Test
+    void testGCI82_lombok() {
+        String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI82/MakeNonReassignedVariablesConstantsForLombok.java";
+        String ruleId = "creedengo-java:GCI82";
+        String ruleMsg = "The variable is never reassigned and can be 'final'";
+        int[] startLines = new int[]{20, 29, 38, 41, 54};
+        int[] endLines = new int[]{21, 30, 39, 42, 54};
+
+        checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines);
+    }
+
+    @Test
+    void testGCI82_lombokWithoutImport() {
+        String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI82/MakeNonReassignedVariablesConstantsWithoutLombokImport.java";
+        String ruleId = "creedengo-java:GCI82";
+        String ruleMsg = "The variable is never reassigned and can be 'final'";
+        int[] startLines = new int[]{11, 13, 34};
+        int[] endLines = new int[]{11, 14, 34};
+
+        checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines);
+    }
+
+    @Test
+    void testGCI82_record() {
+        String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI82/MakeNonReassignedVariablesConstantsForRecord.java";
+        String ruleId = "creedengo-java:GCI82";
+        String ruleMsg = "The variable is never reassigned and can be 'final'";
+        int[] startLines = new int[]{};
+        int[] endLines = new int[]{};
+
+        checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines);
+    }
+
+    @Test
+    void testGCI82_instanceOf() {
+        String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI82/MakeNonReassignedVariablesConstantsForInstanceOf.java";
+        String ruleId = "creedengo-java:GCI82";
+        String ruleMsg = "The variable is never reassigned and can be 'final'";
+        int[] startLines = new int[]{7};
+        int[] endLines = new int[]{7};
+
+        checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines);
+    }
+
+    @Test
+    void testGCI82_abstractMethods() {
+        String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI82/MakeNonReassignedVariablesConstantsForAbstractMethod.java";
+        String ruleId = "creedengo-java:GCI82";
+        String ruleMsg = "The variable is never reassigned and can be 'final'";
+        int[] startLines = new int[]{16, 20};
+        int[] endLines = new int[]{16, 20};
 
         checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines);
     }
@@ -523,8 +578,8 @@ class GCIRulesIT extends GCIRulesBase {
         String filePath = "src/main/java/org/greencodeinitiative/creedengo/java/checks/GCI94/UseOptionalOrElseGetVsOrElse.java";
         String ruleId = "creedengo-java:GCI94";
         String ruleMsg = "Use optional orElseGet instead of orElse.";
-        int[] startLines = new int[]{27};
-        int[] endLines = new int[]{27};
+        int[] startLines = new int[]{29, 31, 33, 35, 55, 56, 57, 58};
+        int[] endLines = new int[]{29, 31, 33, 35, 55, 56, 57, 58};
 
         checkIssuesForFile(filePath, ruleId, ruleMsg, startLines, endLines, SEVERITY, TYPE, EFFORT_1MIN);
     }
